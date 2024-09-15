@@ -1,5 +1,5 @@
 // Forma antiga => const http = require('http') = Usava-se o CommonJS
-import http from 'http' // ESModules => import/Export
+import http from 'node:http' // ESModules => import/Export
 
 const server = http.createServer((req, res) => {
   res.end('server online')
