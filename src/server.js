@@ -5,7 +5,7 @@ import http from 'node:http' // ESModules => import/Export
 // res = Response (Resposta) Está devolvendo ao front end a resposta pedida ao back end
 
 const server = http.createServer((request, response) => {
-  response.end('server online')
+  return response.end('server online')
 })
 
 server.listen(3333)

@@ -11,3 +11,7 @@ Curso na plataforma da Rocketseat - Módulo Node.
 
 // req = Requisição, ou seja, está chamando o nosso servidor.
 // res = Response (Resposta) Está devolvendo ao front end a resposta pedida ao back end
+
+
+3) Instalado "httpie" ( sudo apt install httpie) Ele substitui o browser
+logo, é só digitar no terminal "http localhost:3333" 
