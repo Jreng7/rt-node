@@ -1,33 +1,57 @@
-# curso_node.js_rocketseat
-Curso na plataforma da Rocketseat - Módulo Node.
+# Curso Node.js - Rocketseat
+
+Curso na plataforma da Rocketseat - Módulo Node.js.
+
 ### 06/09/2024 - Iniciando com Node.js
-* Criando um projeto node.js
 
----------------------- // --------------------------
+* Criando um projeto Node.js
 
-// Forma antiga => const http = require('http') = Usava-se o CommonJS
+#### Forma Antiga (CommonJS)
+```js
+const http = require('http'); // Usava-se o CommonJS
+```
 
-{ import http from 'node:http' // ESModules => import/Export }
+#### Forma Atual (ESModules)
+```js
+import http from 'node:http'; // ESModules => import/export
+```
 
-// req = Requisição, ou seja, está chamando o nosso servidor.
-// res = Response (Resposta) Está devolvendo ao front end a resposta pedida ao back end
+- `req` (Request): Requisição, ou seja, está chamando o nosso servidor.
+- `res` (Response): Resposta do servidor, devolvendo ao front-end a resposta solicitada ao back-end.
 
+### Instalando o HTTPie
+Instale o HTTPie com o comando:
+```bash
+sudo apt install httpie
+```
+Para substituir o navegador, use o comando no terminal:
+```bash
+http localhost:3333
+```
 
-3) Instalado "httpie" ( sudo apt install httpie) Ele substitui o browser
-logo, é só digitar no terminal "http localhost:3333" 
+### Usando o Watch Mode
+Para evitar digitar `node src/server.js` repetidamente, o Node.js tem uma funcionalidade chamada **Watch Mode**. Use o comando:
+```bash
+node --watch src/server.js
+```
+Para facilitar, adicione o seguinte script no arquivo `package.json`:
+```json
+"scripts": {
+  "dev": "node --watch src/server.js"
+}
+```
+Agora, para rodar o comando, basta digitar:
+```bash
+npm run dev
+```
 
-4) Para não ficar digitando toda hora "node src/server.js" o node vem com uma 
-funcionalidade chama "Watch", logo, usasse "node --watch src/server.js"
-Porém, para não ficar digitando esse texto longo, é só ir até o arquivo "package.json"
-e colocar um script "dev" e o código "node --watch src/server.js" 
-assim, para o rodar o comando é só digitar "npm run dev" esse dev é o 
-mesmo que "node --watch src/server.js"
+### HTTP - Recursos principais:
+1. **Métodos**: GET, POST, PUT, PATCH, DELETE.
+2. **URL**: Endereço de recursos.
 
-5) HTTP => Os dois principais recursos são:
-
-- Métodos GET/POST/PUT/PATCH/DELETE
-- URL 
-
-6) GET, POST, PUT, PATCH, DELETE
-
-GET => Buscar informações no back-end
+#### Métodos HTTP:
+- **GET**: Buscar informações (recursos) no back-end.
+- **POST**: Criar uma informação (recurso) no back-end.
+- **PUT**: Atualizar ou editar uma entidade inteira no back-end.
+- **PATCH**: Atualizar uma única parte ou informação específica no back-end.
+- **DELETE**: Remover uma informação (recurso) no back-end.
