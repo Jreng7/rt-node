@@ -1,6 +1,7 @@
 {
   "name": "curso_node.js_rocketseat",
   "version": "1.0.0",
+  "type": "module",
   "description": "Curso na plataforma da Rocketseat - Módulo Node.JS",
   "main": "index.js",
   "scripts": {
