@@ -78,3 +78,34 @@ _Exemplos:_
 
 // *GET/users* => Buscando usuários no back-end
 // *POST/users* => Criando um usuário no back-end
+
+
+#### 6. STREAMS 
+
+### Código
+
+```javascript
+process.stdout.write("Digite Algo: ");
+
+process.stdin.on("data", (abacate) => {
+  const writer = abacate.toString().trim();
+  process.stdout.write(`Você digitou ${writer}\n`);
+});
+```
+
+
+**Explicação do Código**
+
+  process.stdout.write("Digite Algo: ");
+*Exibe uma mensagem no terminal pedindo para o usuário digitar algo*
+
+  process.stdin.on("data", (abacate) => {
+*Fica esperando o usuário digitar algo. Quando ele aperta Enter, o que foi digitado é capturado*
+
+  const writer = abacate.toString().trim();
+*Converte o que o usuário digitou (um buffer) para texto e remove espaços extras ou quebras de linha*
+
+  process.stdout.write(`Você digitou ${writer}\n`);
+*Exibe no terminal a mensagem dizendo "Você digitou" seguido do que o usuário digitou*
+
+});
