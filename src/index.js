@@ -1,29 +1,25 @@
 import http from 'node:http'
 
-const user = []
+const sim = []
 
 const server = http.createServer((req, res) => {
 
   const { method, url } = req
 
-  if(method === 'GET' && url === '/user'){
+  if(method === 'POST' && url === '/sim') {
 
-    return res
-    .setHeader('Content-type', 'aplication/json')
-    .end(JSON.stringify(user))
+      sim.push({
+      id: 1,
+      name: "John Doe"
+    })
+
+    return res.writeHead(201).end()
 
   }
-  
-  if(method === 'POST' && url === '/user'){
-      
-    user.push({
-    id: 2,
-    name: 'Joaquim',
-    email: 'joaquim1@hotmail.com'
 
-  })
+  if(method === 'GET' && url === '/sim') {
 
-    return res.writeHead(201).end('Usuário criado com sucesso!')
+    return res.setHeader('Content-type', 'aplication/json').end(JSON.stringify(sim))
 
   }
 
@@ -31,4 +27,4 @@ const server = http.createServer((req, res) => {
 
 })
 
-server.listen(4444)
+server.listen(7777)
