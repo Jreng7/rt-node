@@ -30,18 +30,20 @@ console.log('Caso você não tenha entendido a explicação acima, veja mais uma
 /**
  * Vamos simplificar isso:
  *
- * 1. `process.stdout.write("Digite Algo: ")`: 
+ * 1.  process.stdout.write("Digite Algo: "): 
  *     Exibe uma mensagem no terminal pedindo para o usuário digitar algo.
  *
- * 2. `process.stdin.on("data", (abacate) => {...})`: 
- *     O programa fica "esperando" a pessoa digitar. Quando ela digita e aperta Enter, o que foi digitado é capturado. Aqui, chamamos o que foi digitado de "abacate", mas poderia ser qualquer nome.
+ * 2.  process.stdin.on("data", (abacate) => {...}): 
+ *     O programa fica "esperando" a pessoa digitar. Quando ela digita e aperta enter, o que foi digitado é capturado. 
+ *     Aqui, chamamos o que foi digitado de "abacate", mas poderia ser qualquer nome. No caso, é a função de CallBack.
  *
- * 3. `abacate.toString().trim()`: 
- *     O que a pessoa digitou vem em um formato especial, então convertemos para texto usando `.toString()` e removemos espaços extras e quebras de linha com `.trim()`.
+ * 3.  abacate.toString().trim(): 
+ *     O que a pessoa digitou vem em um formato especial, então convertemos para texto usando .toString() 
+ *     e removemos espaços extras e quebras de linha com .trim()
  *
- * 4. `process.stdout.write(...)`: 
+ * 4.  process.stdout.write(...): 
  *     Depois de entender o que foi digitado, o programa responde dizendo "Você digitou" seguido do que foi escrito.
  *
  *    Resumindo: O código pede ao usuário para digitar algo, espera o input, e mostra de volta no terminal o que foi digitado. 
- *    O evento `"data"` funciona como um aviso para o programa, informando que o usuário digitou algo, e "abacate" é o que foi digitado.
+ *    O evento "data" funciona como um aviso para o programa, informando que o usuário digitou algo, e "abacate" é o que foi digitado.
  */
