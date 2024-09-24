@@ -5,16 +5,29 @@
 
 import { Readable } from 'node:stream'
 
-class DeUmCem extends Readable {
+class OneToHundredStream extends Readable {
 
-  numero = 1
+  index = 1
 
-  _read(){
+  _read() {
 
-    const soma1 = this.numero++
+    const i = this.index++
+
+    setTimeout(() => {
+      if ( i > 100 ) {
+
+        this.push(null)
+  
+      } else {
+  
+        const buf = Buffer.from(String(i))
+  
+        this.push(buf)
+      }
+    }, 100)
 
   }
 
-
-
 }
+
+new OneToHundredStream().pipe(process.stdout)
