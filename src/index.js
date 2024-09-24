@@ -1,30 +1,31 @@
 import http from 'node:http'
 
-const sim = []
+const pessoa = []
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(function(req, res){
 
   const { method, url } = req
 
-  if(method === 'POST' && url === '/sim') {
-
-      sim.push({
+  if ( method === 'POST' && url === '/novo') {
+    
+    pessoa.push({
       id: 1,
-      name: "John Doe"
+      name: 'John Doe',
+      email: 'johndoe@hgmail.com'
     })
 
-    return res.writeHead(201).end()
+    return res.writeHead(201).end('Usuário criado com sucesso!')
 
-  }
+  } else if ( method === 'GET' && url === '/novo') {
 
-  if(method === 'GET' && url === '/sim') {
-
-    return res.setHeader('Content-type', 'aplication/json').end(JSON.stringify(sim))
-
+    return res
+            .setHeader('Content-type', 'aplication/json')
+            .end(JSON.stringify(pessoa))
+    
   }
 
   return res.writeHead(404).end('Not Found')
-
 })
 
-server.listen(7777)
+
+server.listen(7852)

@@ -3,17 +3,15 @@
 //process.stdin
 // .pipe(process.stdout)
 
-
 import { Readable } from 'node:stream'
 
-class OneToHundredStream extends Readable {
+class DeUmCem extends Readable {
 
-  index = 1
+  numero = 1
 
-  _read() {
+  _read(){
 
-    
-
+    const soma1 = this.numero++
 
   }
 
