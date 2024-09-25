@@ -3,7 +3,7 @@
 //process.stdin
 // .pipe(process.stdout)
 
-import { Readable, Writable } from 'node:stream'
+import { Readable, Writable, Transform } from 'node:stream'
 
 class OneTo extends Readable {
   
@@ -21,7 +21,7 @@ class OneTo extends Readable {
         
         this.push(buf)
       }
-    }, 100)
+    }, 1000)
     
   }
 }
@@ -34,5 +34,18 @@ class OneToTen extends Writable {
   }
 }
 
+class Inverse extends Transform {
 
-new OneTo().pipe(new OneToTen())
+  _transform(chunk, encoding, callback){
+    const transformado = Number(chunk.toString()) * -1
+
+    callback(null, Buffer.from(String(transformado))) // Primeiro parâmetro de uma callback é um erro.
+
+  }
+
+}
+
+
+new OneTo()
+  .pipe(new Inverse())
+  .pipe(new OneToTen())
