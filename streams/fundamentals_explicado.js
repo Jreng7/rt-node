@@ -3,14 +3,14 @@
 //process.stdin
 // .pipe(process.stdout)
 
-process.stdout.write("Digite Algo: ");
+process.stdout.write('Digite Algo: ')
 
-process.stdin.on("data", (abacate) => {
-  const writer = abacate.toString().trim();
-
-  process.stdout.write(`Você digitou ${writer}\n`)
-
+process.stdin.on('data', (mouse) => {
+  const resposta = mouse.toString().trim()
+  process.stdout.write(`Você digitou o seguinte texto ${resposta}`)
 })
+
+
 
 /**
  * Esse código solicita ao usuário que digite algo no terminal.
