@@ -3,7 +3,7 @@
 //process.stdin
 // .pipe(process.stdout)
 
-import { Readable } from 'node:stream'
+import { Readable, Writable } from 'node:stream'
 
 class OneTo extends Readable {
   
@@ -26,4 +26,13 @@ class OneTo extends Readable {
   }
 }
 
-new OneTo().pipe(process.stdout)
+class OneToTen extends Writable {
+
+  _write(chunck, encoding, callback) {
+    console.log(Number(chunck.toString()) * 10)
+    callback()
+  }
+}
+
+
+new OneTo().pipe(new OneToTen())
