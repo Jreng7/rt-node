@@ -6,22 +6,24 @@
 import { Readable } from 'node:stream'
 
 class OneTo extends Readable {
-
-  index = 1
-
+  
+  numero = 1
+  
   _read(){
-    const i = this.index++
+    const resultado = this.numero++
 
-    if(i > 100) {
-      this.push(null)
-    } else {
-      const buf = Buffer.from(String(i))
-
-      this.push(buf)
-    }
-
+    setTimeout(() => {
+      if(resultado > 100){
+        this.push(null)
+      } else if (resultado < 100) {
+        
+        const buf = Buffer.from(String(resultado))
+        
+        this.push(buf)
+      }
+    }, 100)
+    
   }
-
 }
 
 new OneTo().pipe(process.stdout)
