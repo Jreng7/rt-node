@@ -1,3 +1,4 @@
+
 import http from 'node:http'
 import { Transform } from 'node:stream'
 
@@ -14,11 +15,15 @@ class Transformed extends Transform {
 // req => Readable Stream
 // res => Writable Stream
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
 
-  
+  const buffers = []
+
+  for await (const dado of buffers) {
+
+  }
 
 })
 
 
-server.listen(3334) 
+server.listen(5775) 
