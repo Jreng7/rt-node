@@ -3,7 +3,7 @@
 
 import { Readable } from 'node:stream'
 
-class FakeUpLoad extends Readable {
+class OneTo extends Readable {
 
   num = 1
   
@@ -22,6 +22,9 @@ class FakeUpLoad extends Readable {
 }
 
 fetch('http://localhost:3334', {
+
   method: 'POST',
-  body: new FakeUpLoad()
+  body: new OneTo(),
+  duplex: 'half'
 })
+

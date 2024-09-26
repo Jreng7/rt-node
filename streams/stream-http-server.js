@@ -4,6 +4,9 @@ import { Transform } from 'node:stream'
 class Transformed extends Transform {
   _transform(chunk, encoding, callback){
     const resposta = Number(chunk) * -1 
+
+    console.log(resposta)
+
     callback(null, Buffer.from(resposta.toString()))
   }
 }
@@ -13,9 +16,11 @@ class Transformed extends Transform {
 
 const server = http.createServer((req, res) => {
 
-
+  return req
+    .pipe(new Transformed())
+    .pipe(res)
 
 })
 
 
-server.listen(3334)
+server.listen(3334) 
