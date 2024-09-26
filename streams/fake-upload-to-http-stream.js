@@ -25,6 +25,6 @@ fetch('http://localhost:3334', {
 
   method: 'POST',
   body: new OneTo(),
-  duplex: 'half'
+  duplex: 'half' // Não gravou aula explicando o assunto, infelizmente. 
 })
 

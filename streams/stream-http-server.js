@@ -14,7 +14,15 @@ class Transformed extends Transform {
 // req => Readable Stream
 // res => Writable Stream
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
+
+
+  const buffers = []
+
+  for await (const dados of buffers) {
+    buffers.push(dados)
+  }
+
 
   return req
     .pipe(new Transformed())
