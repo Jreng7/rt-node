@@ -1,8 +1,6 @@
 // Tentar replicar a aula sem olhar, para ver se entendi.
 
-
 import { Readable, Writable, Transform } from 'node:stream'
-
 
 class One extends Readable {
 
@@ -33,4 +31,13 @@ class OneTen extends Writable {
   }
 }
 
-new One().pipe(new OneTen())
+class OneTenLess extends Transform {
+  _transform(chunk, encoding, callback){
+    const reverso = Number(chunk.toString()) * -1
+    callback(null, String(reverso))
+  }
+}
+
+new One()
+  .pipe(new OneTenLess())
+  .pipe(new OneTen())
