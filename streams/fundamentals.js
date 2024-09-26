@@ -37,7 +37,7 @@ class OneToTen extends Writable {
 class Inverse extends Transform {
 
   _transform(chunk, encoding, callback){
-    const transformado = Number(chunk.toString()) * -1
+    const transformado = Number(chunk.toString()) * -1 // Não era necessário, pois chunk já um número.
 
     callback(null, Buffer.from(String(transformado))) // Primeiro parâmetro de uma callback é um erro.
 
