@@ -21,7 +21,9 @@ class One extends Readable {
 
 
 fetch('http://localhost:1234', {
+
   method: 'POST',
   body: new One(),
   duplex: 'half'
+  
 }) 

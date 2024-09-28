@@ -6,13 +6,18 @@ class Negativo extends Transform {
   _transform(chunk, encoding, callback) {
     const dado = Number(chunk.toString()) * -1
 
+    console.log(dado)
+
     callback(null, dado.toString())
   }
 }
 
+// req => ReadableStream
+// res => WritableStream
+
 const server = http.createServer((req, res) => {
 
-  return req.pipe(new Negativo).pipe(res)
+  return req.pipe(new Negativo()).pipe(res)
 
 })
 
