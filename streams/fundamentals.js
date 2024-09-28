@@ -5,47 +5,38 @@
 
 import { Readable, Writable, Transform } from 'node:stream'
 
-class OneTo extends Readable {
-  
-  numero = 1
-  
+class One extends Readable {
+
+  num = 1
+
   _read(){
-    const resultado = this.numero++
+    const numero = this.num++
 
     setTimeout(() => {
-      if(resultado > 100){
+      if(numero > 10) {
         this.push(null)
-      } else if (resultado < 100) {
-        
-        const buf = Buffer.from(String(resultado))
-        
+      } else if (numero < 10) {
+        const buf = Buffer.from(numero.toString())
         this.push(buf)
       }
     }, 1000)
-    
+
   }
 }
 
-class OneToTen extends Writable {
+class Negativo extends Transform {
+  _transform(chunk, encoding, callback) {
+    const dado = Number(chunk.toString()) * -1
+    callback(null, dado.toString())
+  }
+}
 
-  _write(chunck, encoding, callback) {
-    console.log(Number(chunck.toString()) * 10)
+class OneVsTen extends Writable {
+  _write(chunk, encoding, callback){
+    console.log(Number(chunk.toString()) * 10)
     callback()
   }
-}
-
-class Inverse extends Transform {
-
-  _transform(chunk, encoding, callback){
-    const transformado = Number(chunk.toString()) * -1 // Não era necessário, pois chunk já um número.
-
-    callback(null, Buffer.from(String(transformado))) // Primeiro parâmetro de uma callback é um erro.
-
-  }
 
 }
 
-
-new OneTo()
-  .pipe(new Inverse())
-  .pipe(new OneToTen())
+new One().pipe(new Negativo()).pipe(new OneVsTen())
