@@ -15,7 +15,7 @@ class One extends Readable {
     setTimeout(() => {
       if(numero > 10) {
         this.push(null)
-      } else if (numero < 10) {
+      } else {
         const buf = Buffer.from(numero.toString())
         this.push(buf)
       }

@@ -9,22 +9,22 @@ class OneToHundredStream extends Readable {
     const numero = this.num++
 
     setTimeout(() => {
-      if(numero > 5) {
+      if( numero > 7 ) {
         this.push(null)
-      } else if (numero < 5) {
+      } else {
         const buf = Buffer.from(numero.toString())
         this.push(buf)
       }
-    }, 1000)
+    }, 500)
   }
 }
 
 fetch('http://localhost:3334', {
   method: 'POST',
   body: new OneToHundredStream(),
-  duplex: 'half'
-}).then(response => {
-  return response.text()
-}).then(data => {
-  console.log(data)
+  duplex: 'half',
+}).then(dadosTratados => {
+  return dadosTratados.text()
+}).then(dados => {
+  console.log(dados)
 })
