@@ -109,3 +109,6 @@ process.stdin.on("data", (abacate) => {
 *Exibe no terminal a mensagem dizendo "Você digitou" seguido do que o usuário digitou*
 
 });
+
+
+# Insomnia baixado para trabalhar com req, res e métodos.
