@@ -1,7 +1,7 @@
 
 import { Readable } from 'node:stream'
 
-class One extends Readable {
+class OneToHundredStream extends Readable {
   
   num = 1
 
@@ -9,9 +9,9 @@ class One extends Readable {
     const numero = this.num++
 
     setTimeout(() => {
-      if(numero > 10) {
+      if(numero > 5) {
         this.push(null)
-      } else if (numero < 10) {
+      } else if (numero < 5) {
         const buf = Buffer.from(numero.toString())
         this.push(buf)
       }
@@ -19,8 +19,12 @@ class One extends Readable {
   }
 }
 
-fetch('http://localhost:5454', {
+fetch('http://localhost:3334', {
   method: 'POST',
-  body: new One(),
+  body: new OneToHundredStream(),
   duplex: 'half'
+}).then(response => {
+  return response.text()
+}).then(data => {
+  console.log(data)
 })
