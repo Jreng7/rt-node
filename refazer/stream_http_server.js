@@ -11,9 +11,19 @@ class NumeroNegativo extends Transform {
   }
 }
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
 
-  return req.pipe(new NumeroNegativo()).pipe(res)
+  const buffers = [] 
+
+  for await (const dados of req) { 
+    buffers.push(dados)
+  }
+
+  const bufferResponse = Buffer.concat(buffers).toString() 
+
+  // console.log(bufferResponse)
+
+  return res.end(bufferResponse)
 
 })
 

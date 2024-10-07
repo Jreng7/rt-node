@@ -21,4 +21,8 @@ fetch('http://localhost:3535', {
   method: 'POST',
   body: new One(),
   duplex: 'half'
+}).then((response) => {
+  return response.text()
+}).then((dado) => {
+  console.log(dado)
 })
