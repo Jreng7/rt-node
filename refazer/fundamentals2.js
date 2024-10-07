@@ -15,11 +15,24 @@ class One extends Readable {
 
     const i = this.index++
 
-    if (i > 10) {
+    setTimeout(() => {
+
+      if (i > 10) {
       this.push(null)
     } else {
-      this.push(i)
+
+      const buf = Buffer.from(String(i))
+
+      this.push(buf)
     }
+    }, 500)
+  
+  }
+}
+
+class OneTen extends Writable {
+  _write(chunck, encoding, callback) {
+    
   }
 }
 
