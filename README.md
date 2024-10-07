@@ -2,6 +2,14 @@
 
 Curso na plataforma da Rocketseat - Módulo Node.js.
 
+### Nome do repositório
+
+O nome deste repositório, **rt-nome**, é uma **abreviação** de "Rocketseat Node.js", onde:
+- **rt** se refere a **Rocketseat**
+- **nome** se refere ao **Node.js**
+
+Essa abreviação foi escolhida para manter o nome curto e descritivo.
+
 ### 06/09/2024 - Iniciando com Node.js
 
 * Criando um projeto Node.js
