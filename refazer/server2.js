@@ -1,9 +1,9 @@
 import http from 'node:http'
 
-const app = http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
 
-  return res.end('Curso node.js Rocketseat')
+  return res.end('Nde.js Rocketseat')
 
 })
 
-app.listen(3434)
+server.listen(3434)
