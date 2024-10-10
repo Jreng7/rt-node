@@ -12,7 +12,7 @@ class GeradorNumero extends Readable {
       if ( i > 10 ) {
         this.push(null)
       } else {
-        const dados = Buffer.from(i)
+        const dados = Buffer.from(String(i))
         this.push(dados)
       }
     }, 400);
