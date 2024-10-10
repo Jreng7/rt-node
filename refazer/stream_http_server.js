@@ -4,8 +4,8 @@ const dadosEsperado = []
 
 const servidor = http.createServer(async function(req, res) {
 
-  for await (const data of req ) {
-    
+  for await (const itemReq of req ) {
+    dadosEsperado.push(itemReq)
   }
   
 
