@@ -24,8 +24,9 @@ fetch('http://localhost:7711', {
   method: 'POST',
   body: new GeradorNumero(),
   duplex: 'half',
-}).then(dado => {
-  return dado.text()
-}).then(data => {
-  console.log(data)
 })
+// .then(dado => {
+//   return dado.text()
+// }).then(data => {
+//   console.log(data)
+// })

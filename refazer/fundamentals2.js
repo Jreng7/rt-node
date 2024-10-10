@@ -9,36 +9,37 @@ import { Readable, Writable, Transform } from 'node:stream'
 
 class One extends Readable {
   
-  num = 1
+  numero = 1
 
   _read(){
-    const i = this.num++
+    const i = this.numero++
 
     setTimeout(() => {
-      if (i > 12) {
+      if ( i > 7 ) {
         this.push(null)
       } else {
-        const buf = Buffer.from(String(i))
-        this.push(buf)
+        const buff = Buffer.from(String(i))
+        this.push(buff)
       }
-    }, 700)
+    }, 300)
+
   }
 }
 
-class NegativeOne extends Transform {
-  _transform(chunck, encoding, callback){
-    const dado = Number(String(chunck)) * -1
-    callback(null, dado.toString())
+class Negative extends Transform {
+  _transform(chunk, encoding, callback) {
+    const data = Number(String(chunk)) * -1
+    callback(null, data.toString())
   }
 }
 
 class OneTen extends Writable {
   _write(chunk, encoding, callback){
-    console.log(Number(chunk) * 10)
+    console.log(Number(chunk.toString()) * 10)
     callback()
   }
 }
 
 new One()
-  .pipe(new NegativeOne())
+  .pipe(new Negative())
   .pipe(new OneTen())
