@@ -1,28 +1,27 @@
 import { Readable } from 'node:stream'
 
-class One extends Readable {
+class GeradorNumero extends Readable {
+  
   num = 1
 
   _read(){
+
     const i = this.num++
 
     setTimeout(() => {
-      if (i > 15) {
+      if ( i > 10 ) {
         this.push(null)
       } else {
-        const buf = Buffer.from(String(i))
-        this.push(buf)
+        const dados = Buffer.from(i)
+        this.push(dados)
       }
-    }, 500);
+    }, 400);
+
   }
 }
 
-fetch('http://localhost:3535', {
+fetch('http://localhost:7711', {
   method: 'POST',
-  body: new One(),
-  duplex: 'half'
-}).then((response) => {
-  return response.text()
-}).then((dado) => {
-  console.log(dado)
+  body: new GeradorNumero(),
+  duplex: 'half',
 })
