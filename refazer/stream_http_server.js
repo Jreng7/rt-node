@@ -7,6 +7,11 @@ const servidor = http.createServer(async function(req, res) {
   for await (const itemReq of req ) {
     dadosEsperado.push(itemReq)
   }
-  
 
-}).listen(7711)
+  const pegarDadosEsperado = Buffer.concat(dadosEsperado).toString()
+
+  return res.end(pegarDadosEsperado)  
+
+})
+
+servidor.listen(7711)
