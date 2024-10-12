@@ -28,9 +28,8 @@ const server = http.createServer(async (req, res) => {
   try {
     req.body = JSON.parse(Buffer.concat(buffers).toString())
   } catch {
-
+    req.body = null
   }
-
 
   if ( method === 'GET' && url === '/users') {
 
