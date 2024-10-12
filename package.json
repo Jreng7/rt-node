@@ -5,7 +5,7 @@
   "description": "Curso na plataforma da Rocketseat - Módulo Node.JS",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch refazer/server2.js"
+    "dev": "node --watch src/server.js"
   },
   "keywords": [],
   "author": "Josue R S Jacinto",
