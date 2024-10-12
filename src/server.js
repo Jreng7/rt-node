@@ -15,8 +15,19 @@ import http from 'node:http' // ESModules => import/Export
 
 const users = []
 
-const server = http.createServer((req, res) => {
+const server = http.createServer(async (req, res) => {
+  
   const { method, url } = req
+
+  const buffers = []
+
+  for await (const data of req) {
+    buffers.push(data)
+  }
+
+  const body = Buffer.concat(buffers).toString()
+
+  console.log(body)
 
   if ( method === 'GET' && url === '/users') {
 
