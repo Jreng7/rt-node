@@ -21,13 +21,16 @@ const server = http.createServer(async (req, res) => {
 
   const buffers = []
 
-  for await (const data of req) {
-    buffers.push(data)
+  for await (const chunk of req) {
+    buffers.push(chunk)
   }
 
-  const body = JSON.parse(Buffer.concat(buffers).toString())
+  try {
+    req.body = JSON.parse(Buffer.concat(buffers).toString())
+  } catch {
 
-  console.log(body)
+  }
+
 
   if ( method === 'GET' && url === '/users') {
 
@@ -39,10 +42,12 @@ const server = http.createServer(async (req, res) => {
 
   if ( method === 'POST' && url === '/users') {
 
+    const { name, email } = req.body
+
     users.push({
       id: 1,
-      name: 'John Doe',
-      email: 'johndoe@gmail.com'
+      name,
+      email,
     })
 
     return res.writeHead(201).end()
