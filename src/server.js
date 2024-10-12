@@ -1,5 +1,5 @@
 // Forma antiga => const http = require('http') = Usava-se o CommonJS
-import http from 'node:http' // ESModules => import/Export
+ // ESModules => import/Export
 
 // req = Requisição, ou seja, está chamando o nosso servidor.
 // res = Response (Resposta) Está devolvendo ao front end a resposta pedida ao back end
@@ -12,6 +12,7 @@ import http from 'node:http' // ESModules => import/Export
 
 // HTTP Status Code
 
+import http from 'node:http'
 
 const users = []
 
