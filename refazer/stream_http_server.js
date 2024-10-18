@@ -13,7 +13,7 @@ class Negative extends Transform {
 
 // const dadosEsperado = []
 
-const servidor = http.createServer(async function(req, res) {
+const servidor = http.createServer(function(req, res) {
 
   return req.pipe(new Negative()).pipe(res)
 
