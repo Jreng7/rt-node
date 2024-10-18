@@ -26,9 +26,7 @@ const server = http.createServer(async (req, res) => {
   if ( method === 'GET' && url === '/users') {
 
     // Early return 
-    return res
-    .setHeader('Content-type', 'aplication/json')
-    .end(JSON.stringify(users))
+    return res.end(JSON.stringify(users))
   }
 
   if ( method === 'POST' && url === '/users') {
