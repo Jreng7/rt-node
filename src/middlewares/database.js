@@ -2,9 +2,17 @@ export class Database {
 
   database = {}
 
-  insert(table) {
+  select(table) {
+    const data = this.database[table] ?? []
+
+    return data
+
+  }
+
+  insert(table, data) {
     
   }
 
+  
 
 }
