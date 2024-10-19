@@ -14,8 +14,9 @@
 
 import http from 'node:http'
 import { json } from './middlewares/json'
+import { Database } from './middlewares/database'
 
-const users = []
+const db = new Database
 
 const server = http.createServer(async (req, res) => {
 
@@ -24,20 +25,23 @@ const server = http.createServer(async (req, res) => {
   await json(req, res)
 
   if ( method === 'GET' && url === '/users') {
+    
 
     // Early return 
-    return res.end(JSON.stringify(users))
+    return res.end(JSON.stringify(db))
   }
 
   if ( method === 'POST' && url === '/users') {
 
     const { name, email } = req.body
 
-    users.push({
-      id: 1,
+    const user = {
+      id: Date.now(),
       name,
       email,
-    })
+    }
+
+    db.insert('users', user)
 
     return res.writeHead(201).end()
   }
