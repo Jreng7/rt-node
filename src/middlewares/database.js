@@ -8,9 +8,11 @@ export class Database {
   }
 
   insert(table, data) {
-    if(Array.isArray(this.database[table])){
+    if(Array.isArray(this.database[table])){ // Condição! 
+
       this.database[table].push(data)
-    } else {
+    } else { // senão 
+
       this.database[table] = [data]
     }
 
