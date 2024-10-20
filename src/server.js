@@ -16,7 +16,7 @@ import http from 'node:http'
 import { json } from './middlewares/json.js'
 import { Database } from './middlewares/database.js'
 
-const db = new Database
+const database = new Database
 
 const server = http.createServer(async (req, res) => {
 
@@ -25,7 +25,7 @@ const server = http.createServer(async (req, res) => {
   await json(req, res)
 
   if ( method === 'GET' && url === '/users') {
-    const users = db.select('users')
+    const users = database.select('users')
     // Early return 
     return res.end(JSON.stringify(users))
   }
@@ -40,7 +40,8 @@ const server = http.createServer(async (req, res) => {
       email,
     }
 
-    db.insert('users', user)
+    database.insert('users', user)
+    console.log(database)
 
     return res.writeHead(201).end("Usuário criado com sucesso!")
   }
