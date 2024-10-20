@@ -26,7 +26,6 @@ const server = http.createServer(async (req, res) => {
 
   if ( method === 'GET' && url === '/users') {
     
-
     // Early return 
     return res.end(JSON.stringify(db))
   }

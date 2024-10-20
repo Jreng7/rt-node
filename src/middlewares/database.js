@@ -1,22 +1,18 @@
 export class Database {
-  
+
   database = {}
 
-  select(table) {
+  select(table){
     const data = this.database[table] ?? []
     return data;
   }
 
-  insert(table, data) {
-    if(Array.isArray(this.database[table])){ // Condição! 
+  insert(table, data){
 
+    if(Array.isArray(this.database[table])){
       this.database[table].push(data)
-    } else { // senão 
-
+    } else {
       this.database[table] = [data]
     }
-
-    return data;
   }
-
 }

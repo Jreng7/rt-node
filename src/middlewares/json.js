@@ -1,13 +1,13 @@
-export async function json(req, res){
+export async function json(req, res) {
 
-  const buffers = []
+  buffers = []
 
-  for await (const chunk of req) {
-    buffers.push(chunk)
+  for await (const data of req) {
+    buffers.push(data)
   }
 
   try {
-    req.body = JSON.parse(Buffer.concat(buffers).toString())
+    req.body = JSON.stringify(Buffer.concat(buffers).toString())
   } catch {
     req.body = null
   }
