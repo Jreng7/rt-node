@@ -32,4 +32,4 @@ const server = http.createServer(async (req, res) => {
 
 })
 
-server.listen(3334)
+server.listen(0)

@@ -20,7 +20,7 @@ class GeradorNumero extends Readable {
   }
 }
 
-fetch('http://localhost:7711', {
+fetch('http://localhost:0', {
   method: 'POST',
   body: new GeradorNumero(),
   duplex: 'half',

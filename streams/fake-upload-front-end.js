@@ -19,7 +19,7 @@ class OneToHundredStream extends Readable {
   }
 }
 
-fetch('http://localhost:3334', {
+fetch('http://localhost:0', {
   method: 'POST',
   body: new OneToHundredStream(),
   duplex: 'half',

@@ -13,8 +13,8 @@
 // HTTP Status Code
 
 import http from 'node:http'
-import { json } from './middlewares/json'
-import { Database } from './middlewares/database'
+import { json } from './middlewares/json.js'
+import { Database } from './middlewares/database.js'
 
 const db = new Database
 
@@ -25,9 +25,9 @@ const server = http.createServer(async (req, res) => {
   await json(req, res)
 
   if ( method === 'GET' && url === '/users') {
-    
+    const users = db.select('users')
     // Early return 
-    return res.end(JSON.stringify(db))
+    return res.end(JSON.stringify(users))
   }
 
   if ( method === 'POST' && url === '/users') {
@@ -35,14 +35,14 @@ const server = http.createServer(async (req, res) => {
     const { name, email } = req.body
 
     const user = {
-      id: Date.now(),
+      id: 1,
       name,
       email,
     }
 
     db.insert('users', user)
 
-    return res.writeHead(201).end()
+    return res.writeHead(201).end("Usuário criado com sucesso!")
   }
 
 

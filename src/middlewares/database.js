@@ -4,7 +4,7 @@ export class Database {
 
   select(table){
     const data = this.database[table] ?? []
-    return data;
+    return data
   }
 
   insert(table, data){
