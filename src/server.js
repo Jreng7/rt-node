@@ -1,5 +1,5 @@
 // Forma antiga => const http = require('http') = Usava-se o CommonJS
- // ESModules => import/Export
+// ESModules => import/Export
 
 // req = Requisição, ou seja, está chamando o nosso servidor.
 // res = Response (Resposta) Está devolvendo ao front end a resposta pedida ao back end
@@ -16,7 +16,7 @@ import http from 'node:http'
 import { json } from './middlewares/json.js'
 import { Database } from './middlewares/database.js'
 
-const database = new Database
+const db = new Database
 
 const server = http.createServer(async (req, res) => {
 
@@ -24,24 +24,23 @@ const server = http.createServer(async (req, res) => {
 
   await json(req, res)
 
-  if ( method === 'GET' && url === '/users') {
-    const users = database.select('users')
+  if (method === 'GET' && url === '/users') {
+    const users = db.select('users')
     // Early return 
-    return res.end(JSON.stringify(users))
+    return res
+      .setHeader('Content-type', 'application/json')
+      .end(JSON.stringify(users))
   }
 
-  if ( method === 'POST' && url === '/users') {
+  if (method === 'POST' && url === '/users') {
 
     const { name, email } = req.body
 
-    const user = {
+    db.insert('user', {
       id: 1,
       name,
       email,
-    }
-
-    database.insert('users', user)
-    console.log(database)
+    })
 
     return res.writeHead(201).end("Usuário criado com sucesso!")
   }

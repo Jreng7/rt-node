@@ -1,19 +1,29 @@
+import fs from 'node:fs/promises'
+
 export class Database {
+  
+  #banco = {}
 
-  database = {}
-
-  select(table){
-    const data = this.database[table] ?? []
-    return data
+  #persist() {
+    fs.writeFile('db.json', JSON.stringify(this.#banco))
   }
 
-  insert(table, data){
+  select(tabela) {
+    const dado = this.#banco[tabela] ?? []
+    
+    return dado;
+  }
 
-    if(Array.isArray(this.database[table])){
-      this.database[table].push(data)
+  insert(tabela, dado){
+    if(Array.isArray(this.#banco[tabela])){
+      this.dado[tabela].push(dado)
     } else {
-      this.database[table] = [data]
+      this.dado[tabela] = [dado]
     }
-    return data;
+
+    this.#persist()
+
+    return dado;
   }
+
 }
