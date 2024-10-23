@@ -16,9 +16,9 @@ export class Database {
 
   insert(tabela, dado){
     if(Array.isArray(this.#banco[tabela])){
-      this.dado[tabela].push(dado)
+      this.#banco[tabela].push(dado)
     } else {
-      this.dado[tabela] = [dado]
+      this.#banco[tabela] = [dado]
     }
 
     this.#persist()
