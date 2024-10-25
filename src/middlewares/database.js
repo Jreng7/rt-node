@@ -1,15 +1,17 @@
 import fs from 'node:fs/promises'
 
 // Retorna o caminho inteiro do arquivo atual, no caso, database.js
-console.log(import.meta.url)
+// console.log(import.meta.url)
 // file:///home/josue/developer/rt-node/src/middlewares/database.js
+
+const databaPath = new URL('./db.json', import.meta.url)
 
 export class Database {
   
   #banco = {}
 
   #persist() {
-    fs.writeFile('db.json', JSON.stringify(this.#banco))
+    fs.writeFile(databaPath, JSON.stringify(this.#banco))
   }
 
   select(tabela) {
