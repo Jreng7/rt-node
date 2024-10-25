@@ -4,7 +4,7 @@ import fs from 'node:fs/promises'
 // console.log(import.meta.url)
 // file:///home/josue/developer/rt-node/src/middlewares/database.js
 
-const databaPath = new URL('./db.json', import.meta.url)
+const databaPath = new URL('../db.json', import.meta.url)
 
 export class Database {
   
