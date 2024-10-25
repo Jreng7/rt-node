@@ -1,5 +1,9 @@
 import fs from 'node:fs/promises'
 
+// Retorna o caminho inteiro do arquivo atual, no caso, database.js
+console.log(import.meta.url)
+// file:///home/josue/developer/rt-node/src/middlewares/database.js
+
 export class Database {
   
   #banco = {}
