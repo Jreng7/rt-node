@@ -11,7 +11,7 @@ export class Database {
   #banco = {}
 
   constructor() {
-    fs.readFile(databaPath)
+    fs.readFile(databaPath, 'utf-8')
   }
 
   #persist() {
