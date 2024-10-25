@@ -10,6 +10,10 @@ export class Database {
   
   #banco = {}
 
+  constructor() {
+    fs.readFile(databaPath)
+  }
+
   #persist() {
     fs.writeFile(databaPath, JSON.stringify(this.#banco))
   }
