@@ -1,7 +1,7 @@
 import { Database } from './middlewares/database.js'
 import { randomUUID } from 'node:crypto' //  Universal Unique Identifier, ou ( Identificador Universal Único. )
 
-const db = new Database
+const db = new Database()
 
 export const routes = [
 

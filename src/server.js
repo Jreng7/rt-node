@@ -22,9 +22,13 @@ const server = http.createServer(async (req, res) => {
 
   await json(req, res)
 
-  const route = routes.find(route => {
-    return route.method === method && route.path === url
-  })
+  const route = routes.find((itemPercorrido => {
+    return itemPercorrido.method === method && itemPercorrido.path === url
+  }))
+
+  if (route) {
+    route.handler(req, res)
+  }
 
   return res.writeHead(404).end('Not Found')
 })
