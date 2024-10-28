@@ -4,36 +4,37 @@ import fs from 'node:fs/promises'
 // console.log(import.meta.url)
 // file:///home/josue/developer/rt-node/src/middlewares/database.js
 
-const databaPath = new URL('../db.json', import.meta.url)
+const databasePath = new URL('../db.json', import.meta.url)
 
 export class Database {
   
-  #banco = {}
+  #database = {}
 
   constructor() {
-    fs.readFile(databaPath, 'utf8').then(data => {
-      this.#banco = JSON.parse(data)
+    fs.readFile(databasePath, 'utf8')
+      .then(data => {
+        this.#database = JSON.parse(data)
     })
-    .catch(() => {
-      this.#persist()
+      .catch(() => {
+        this.#persist()
     })
   }
 
-  #persist() {
-    fs.writeFile(databaPath, JSON.stringify(this.#banco))
+  #persist() {  
+    fs.writeFile(databasePath, JSON.stringify(this.#database))
   }
 
   select(tabela) {
-    const dado = this.#banco[tabela] ?? []
+    const dado = this.#database[tabela] ?? []
     
     return dado;
   }
 
   insert(tabela, dado){
-    if(Array.isArray(this.#banco[tabela])){
-      this.#banco[tabela].push(dado)
+    if (Array.isArray(this.#database[tabela])){
+      this.#database[tabela].push(dado)
     } else {
-      this.#banco[tabela] = [dado]
+      this.#database[tabela] = [dado]
     }
 
     this.#persist()

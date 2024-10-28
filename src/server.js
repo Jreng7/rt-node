@@ -36,11 +36,13 @@ const server = http.createServer(async (req, res) => {
 
     const { name, email } = req.body
 
-    db.insert('user', {
+    const user = {
       id: 1,
       name,
       email,
-    })
+    }
+
+    db.insert('users', user)
 
     return res.writeHead(201).end("Usuário criado com sucesso!")
   }
