@@ -16,6 +16,12 @@ import http from 'node:http'
 import { json } from './middlewares/json.js'
 import { routes } from './middlewares/routes.js'
 
+// Query parameters: URL Stateful => Filtros, paginação, não-obrigatórios.
+// Route Parameters:
+// 
+
+
+
 const server = http.createServer(async (req, res) => {
 
   const { method, url } = req
