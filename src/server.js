@@ -14,6 +14,7 @@
 
 import http from 'node:http'
 import { json } from './middlewares/json.js'
+import { routes } from './middlewares/routes.js'
 
 const server = http.createServer(async (req, res) => {
 
@@ -21,19 +22,9 @@ const server = http.createServer(async (req, res) => {
 
   await json(req, res)
 
-  if (method === 'GET' && url === '/users') {
-    const users = db.select('users')
-    // Early return 
-    return res
-      .setHeader('Content-type', 'application/json')
-      .end(JSON.stringify(users))
-  }
-
-  if (method === 'POST' && url === '/users') {
-
-    
-  }
-
+  const route = routes.find(route => {
+    return route.method === method && route.path === url
+  })
 
   return res.writeHead(404).end('Not Found')
 })
