@@ -1,16 +1,42 @@
 import { Database } from './middlewares/database.js'
 import { randomUUID } from 'node:crypto' //  Universal Unique Identifier, ou ( Identificador Universal Único. )
 
+const db = new Database
+
 export const routes = [
+
+  //  Lista Usuários.
   {
     method: 'GET',
     path: '/users',
     handler: (req, res) => {
+
       const users = db.select('users')
-      // Early return 
+
       return res
         .setHeader('Content-type', 'application/json')
         .end(JSON.stringify(users))
     }
+  },
+
+  //  Cria Usuários.
+  {
+    method: 'POST',
+    path: '/users',
+    handler: (req, res) => {
+
+      const { name, email } = req.body
+
+        const user = {
+          id: randomUUID(),
+          name,
+          email,
+        }
+
+        db.insert('users', user)
+
+        return res.writeHead(201).end("Usuário criado com sucesso!")
+    }
   }
+
 ]

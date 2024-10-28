@@ -15,9 +15,6 @@
 import http from 'node:http'
 import { json } from './middlewares/json.js'
 
- 
-const db = new Database
-
 const server = http.createServer(async (req, res) => {
 
   const { method, url } = req
@@ -34,17 +31,7 @@ const server = http.createServer(async (req, res) => {
 
   if (method === 'POST' && url === '/users') {
 
-    const { name, email } = req.body
-
-    const user = {
-      id: randomUUID(),
-      name,
-      email,
-    }
-
-    db.insert('users', user)
-
-    return res.writeHead(201).end("Usuário criado com sucesso!")
+    
   }
 
 
