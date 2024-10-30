@@ -25,9 +25,8 @@ export class Database {
   }
 
   select(tabela) {
-    const dado = this.#database[tabela] ?? []
-    
-    return dado;
+    return this.#database[tabela] ?? []
+ 
   }
 
   insert(tabela, dado){
