@@ -1,6 +1,6 @@
 export function buildRoutePath(path){
 
-  const routeParametersPath = /:([a-zA-Z])+/g
-  const pathWithParams = path.replaceAll(routeParametersPath, /[a-z]/g)
+  const routeParametersPath = /:([a-zA-Z]+)/g
+  const pathWithParams = path.replaceAll(routeParametersPath, /([a-z0-9\-_]+)/g
 
-}
+)}
