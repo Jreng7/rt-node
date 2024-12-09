@@ -29,11 +29,14 @@ const server = http.createServer(async (req, res) => {
   await json(req, res)
 
   const route = routes.find((itemPercorrido => {
-    return itemPercorrido.method === method && itemPercorrido.path === url
+    return itemPercorrido.method === method && itemPercorrido.path.test(url)
   }))
 
   if (route) {
-    route.handler(req, res)
+
+    const routeParams = req.url.match()
+
+    return route.handler(req, res)
   }
 
   return res.writeHead(404).end('Not Found')
