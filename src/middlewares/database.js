@@ -41,4 +41,6 @@ export class Database {
     return dado;
   }
 
+  delete(){}
+
 }

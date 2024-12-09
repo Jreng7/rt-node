@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
 
       id: 1,
       name: 'John Doe',
-      email: 'johndoe@gmail.com'
+      email: 'johndoee@gmail.com'
 
     })
 

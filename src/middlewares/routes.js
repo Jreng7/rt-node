@@ -44,7 +44,7 @@ export const routes = [
     handler: (req, res) => {
       const { id } = req.params
       db.delete('users', id)
-      return res.
+      return res.writeHead(204).end()
     }
   }
 
