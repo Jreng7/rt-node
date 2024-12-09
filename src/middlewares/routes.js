@@ -8,7 +8,7 @@ export const routes = [
   //  Lista Usuários.
   {
     method: 'GET',
-    path: '/users',
+    path: buildRoutePath('/users'),
     handler: (req, res) => {
 
       const users = db.select('users')
@@ -22,7 +22,7 @@ export const routes = [
   //  Cria Usuários.
   {
     method: 'POST',
-    path: '/users',
+    path: buildRoutePath('/users'),
     handler: (req, res) => {
 
       const { name, email } = req.body
@@ -36,6 +36,13 @@ export const routes = [
         db.insert('users', user)
 
         return res.writeHead(201).end("Usuário criado com sucesso!")
+    }
+  },
+  {
+    method: 'DELETE',
+    path: buildRoutePath('/users/:id'),
+    handler: (req, res) => {
+      res.end()
     }
   }
 
